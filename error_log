@@ -1,0 +1,41 @@
+[27-Apr-2016 17:12:16 UTC] PHP Parse error:  syntax error, unexpected '$usuario' (T_VARIABLE) in /home/martinsolorzano/radios/helpdesk/controllers/Usuarios.php on line 79
+[27-Apr-2016 18:12:21 UTC] PHP Parse error:  syntax error, unexpected '$radio' (T_VARIABLE) in /home/martinsolorzano/radios/helpdesk/views/forms/f_radio.php on line 20
+[27-Apr-2016 18:13:35 UTC] PHP Parse error:  syntax error, unexpected '$radio' (T_VARIABLE) in /home/martinsolorzano/radios/helpdesk/views/forms/f_radio.php on line 20
+[27-Apr-2016 18:33:02 UTC] PHP Fatal error:  Call to a member function actualizar() on a non-object in /home/martinsolorzano/radios/helpdesk/controllers/radios.php on line 51
+[27-Apr-2016 18:33:18 UTC] PHP Fatal error:  Call to a member function actualizar() on a non-object in /home/martinsolorzano/radios/helpdesk/controllers/radios.php on line 51
+[28-Apr-2016 13:34:54 UTC] PHP Fatal error:  Call to undefined method m_radios::obt_estados() in /home/martinsolorzano/radios/helpdesk/controllers/radios.php on line 38
+[28-Apr-2016 13:50:58 UTC] PHP Parse error:  syntax error, unexpected ':' in /home/martinsolorzano/radios/helpdesk/views/forms/f_radio.php on line 5
+[28-Apr-2016 17:42:02 UTC] PHP Parse error:  syntax error, unexpected ']' in /home/martinsolorzano/radios/helpdesk/controllers/radios.php on line 72
+[28-Apr-2016 18:04:56 UTC] PHP Parse error:  syntax error, unexpected '%' in /home/martinsolorzano/radios/helpdesk/controllers/radios.php on line 84
+[28-Apr-2016 18:05:12 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/martinsolorzano/radios/helpdesk/controllers/radios.php on line 87
+[29-Apr-2016 14:39:31 UTC] PHP Fatal error:  Call to undefined method m_inicio::obt_departamentos() in /home/martinsolorzano/radios/helpdesk/controllers/Inicio.php on line 20
+[02-May-2016 14:36:40 UTC] PHP Fatal error:  Call to undefined method m_radios::obt_departamentos_radios() in /home/martinsolorzano/radios/helpdesk/controllers/radios.php on line 60
+[03-May-2016 16:27:09 UTC] PHP Parse error:  syntax error, unexpected '?' in /home/martinsolorzano/radios/helpdesk/models/usuario.php on line 14
+[03-May-2016 16:28:07 UTC] PHP Parse error:  syntax error, unexpected '?' in /home/martinsolorzano/radios/helpdesk/models/usuario.php on line 14
+[03-May-2016 16:28:09 UTC] PHP Parse error:  syntax error, unexpected '?' in /home/martinsolorzano/radios/helpdesk/models/usuario.php on line 14
+[03-May-2016 16:28:09 UTC] PHP Parse error:  syntax error, unexpected '?' in /home/martinsolorzano/radios/helpdesk/models/usuario.php on line 14
+[03-May-2016 16:28:10 UTC] PHP Parse error:  syntax error, unexpected '?' in /home/martinsolorzano/radios/helpdesk/models/usuario.php on line 14
+[03-May-2016 16:28:10 UTC] PHP Parse error:  syntax error, unexpected '?' in /home/martinsolorzano/radios/helpdesk/models/usuario.php on line 14
+[03-May-2016 16:28:10 UTC] PHP Parse error:  syntax error, unexpected '?' in /home/martinsolorzano/radios/helpdesk/models/usuario.php on line 14
+[03-May-2016 16:28:10 UTC] PHP Parse error:  syntax error, unexpected '?' in /home/martinsolorzano/radios/helpdesk/models/usuario.php on line 14
+[10-May-2016 15:03:56 UTC] PHP Fatal error:  require_once(): Failed opening required 'http://radios.easyclick.com.mx/src/dompdf/dompdf_config.inc.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/martinsolorzano/radios/helpdesk/views/forms/f_resguardo.php on line 30
+[10-May-2016 16:14:40 UTC] PHP Warning:  require_once(/home/martinsolorzano/radios/system/libraries/dompdf/include/ci_exceptions.cls.php): failed to open stream: No such file or directory in /home/martinsolorzano/radios/system/libraries/dompdf/dompdf_config.inc.php on line 208
+[10-May-2016 16:14:40 UTC] PHP Fatal error:  require_once(): Failed opening required '/home/martinsolorzano/radios/system/libraries/dompdf/include/ci_exceptions.cls.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/martinsolorzano/radios/system/libraries/dompdf/dompdf_config.inc.php on line 208
+[10-May-2016 16:29:24 UTC] PHP Fatal error:  require_once(): Failed opening required '/home/martinsolorzano/radios/system/libraries/dompdf/dompdf_config.inc.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/martinsolorzano/radios/system/libraries/pdf.php on line 14
+[10-May-2016 16:37:09 UTC] PHP Fatal error:  require_once(): Failed opening required '/home/martinsolorzano/radios/system/libraries/dompdf/dompdf_config.inc.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/martinsolorzano/radios/system/libraries/pdf.php on line 14
+[10-May-2016 16:51:15 UTC] PHP Fatal error:  require_once(): Failed opening required '/home/martinsolorzano/radios/system/libraries/dompdf/dompdf_config.inc.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/martinsolorzano/radios/system/libraries/pdf.php on line 14
+[10-May-2016 16:51:24 UTC] PHP Fatal error:  require_once(): Failed opening required '/home/martinsolorzano/radios/system/libraries/dompdf/dompdf_config.inc.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/martinsolorzano/radios/system/libraries/pdf.php on line 14
+[10-May-2016 16:51:25 UTC] PHP Fatal error:  require_once(): Failed opening required '/home/martinsolorzano/radios/system/libraries/dompdf/dompdf_config.inc.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/martinsolorzano/radios/system/libraries/pdf.php on line 14
+[10-May-2016 16:51:25 UTC] PHP Fatal error:  require_once(): Failed opening required '/home/martinsolorzano/radios/system/libraries/dompdf/dompdf_config.inc.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/martinsolorzano/radios/system/libraries/pdf.php on line 14
+[10-May-2016 16:51:26 UTC] PHP Fatal error:  require_once(): Failed opening required '/home/martinsolorzano/radios/system/libraries/dompdf/dompdf_config.inc.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/martinsolorzano/radios/system/libraries/pdf.php on line 14
+[10-May-2016 17:05:56 UTC] PHP Warning:  require_once(/home/martinsolorzano/radios/system/libraries/dompdf/include/ci_exceptions.cls.php): failed to open stream: No such file or directory in /home/martinsolorzano/radios/system/libraries/dompdf/dompdf_config.inc.php on line 208
+[10-May-2016 17:05:56 UTC] PHP Fatal error:  require_once(): Failed opening required '/home/martinsolorzano/radios/system/libraries/dompdf/include/ci_exceptions.cls.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/martinsolorzano/radios/system/libraries/dompdf/dompdf_config.inc.php on line 208
+[10-May-2016 18:15:39 UTC] PHP Warning:  require_once(/home/martinsolorzano/radios/system/libraries/dompdf/include/ci_exceptions.cls.php): failed to open stream: No such file or directory in /home/martinsolorzano/radios/system/libraries/dompdf/dompdf_config.inc.php on line 208
+[10-May-2016 18:15:39 UTC] PHP Fatal error:  require_once(): Failed opening required '/home/martinsolorzano/radios/system/libraries/dompdf/include/ci_exceptions.cls.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/martinsolorzano/radios/system/libraries/dompdf/dompdf_config.inc.php on line 208
+[11-May-2016 15:59:27 UTC] PHP Fatal error:  Call to undefined function by() in /home/martinsolorzano/radios/helpdesk/models/m_usuarios.php on line 62
+[12-May-2016 15:32:49 UTC] PHP Parse error:  syntax error, unexpected '$fecha' (T_VARIABLE) in /home/martinsolorzano/radios/helpdesk/models/m_radios.php on line 143
+[12-May-2016 15:53:20 UTC] PHP Fatal error:  Function name must be a string in /home/martinsolorzano/radios/helpdesk/views/listas/l_radios.php on line 69
+[13-May-2016 14:19:37 UTC] PHP Fatal error:  Call to undefined method m_usuarios::contar_radios_extraviados() in /home/martinsolorzano/radios/helpdesk/controllers/Inicio.php on line 28
+[13-May-2016 14:20:03 UTC] PHP Fatal error:  Call to undefined method m_usuarios::contador_radios_extraviados() in /home/martinsolorzano/radios/helpdesk/controllers/Inicio.php on line 28
+[13-May-2016 15:28:09 UTC] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home/martinsolorzano/radios/helpdesk/controllers/Inicio.php on line 17
+[16-May-2016 14:22:51 UTC] PHP Parse error:  syntax error, unexpected ':' in /home/martinsolorzano/radios/helpdesk/views/listas/l_usuarios.php on line 48
