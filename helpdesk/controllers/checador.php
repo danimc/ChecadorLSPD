@@ -93,7 +93,7 @@ class Checador extends CI_Controller {
 										<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 										<span aria-hidden="true">×</span>
 										</button>
-										<strong>Empleado no.: ' . $empleado .'</strong> Entrada checada Satisfactoriamente!
+										<strong>Empleado no.: ' . $empleado .'</strong> Entrada Satisfactoria!
 									</div>';
 		 }
 		 elseif ($entrada->hora_salida == '')
@@ -104,7 +104,7 @@ class Checador extends CI_Controller {
 										<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 										<span aria-hidden="true">×</span>
 										</button>
-										<strong>Empleado no.: ' . $empleado .'</strong> Salida checada Satisfactoriamente!
+										<strong>Empleado no.: ' . $empleado .'</strong> Salida Satisfactoria!
 									</div>';
 		 }
 		 else
@@ -137,23 +137,16 @@ class Checador extends CI_Controller {
 		$img = $this->m_usuarios->datos_usuario_validacion($id);
 		$datos['titulo'] = 'Reporte de checado por Empleado';	
 		$datos["historico"] = $this->m_checador->obt_checado($id);	
-		$datos["actual"] = $this->m_usuarios->obt_usuarios($id);	
+		$datos["actual"] = $this->m_usuarios->obt_usuarios($id);
+		$datos["datosGrafica"] = $this->m_checador->datos_Grafica($id);	
 		$fotoPerfil = str_replace(" ", "%20", $img->nombreCompleto);
 		$ruta_foto = 'http://172.16.1.9/personal/src/img/fotografias/' .$fotoPerfil.'.JPG';
 		$ruta_foto2 = 'http://172.16.1.9/personal/src/img/fotografias/' .$fotoPerfil.'.jpg';
-
-
-
-		//$pic = file_get_contents($ruta_foto2);
-	
+			
 			$valida[0] = $ruta_foto2;
 			$valida[1] = $ruta_foto;
-	
-		
-	//	$pic = file_get_contents($ruta_foto);
-			
-	
-		$datos["img"] = $valida;
+			$datos["img"] = $valida;
+
 		$this->load->view('_head');
 		$this->load->view('_menu');
 		$this->load->view('listas/l_historial',$datos);

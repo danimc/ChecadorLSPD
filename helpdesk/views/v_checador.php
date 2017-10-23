@@ -30,14 +30,15 @@
 							 
 								<div align="center" class="form-group">
 									<canvas   id="foto" width="100%" height=""></canvas>
-									<input type="text" name="empleado" class="form-control" id="empleado" placeholder="Num. Empleado">
+									<input type="number" name="empleado" class="form-control" id="empleado" placeholder="Num. Empleado">
 								</div>
 								
-								<div class="px-2 form-group mb-0">
+								<div class="px-2 form-group mb-0" align="center">
 									<button type="submit" class="btn bg-facebook btn-lg btn-block text-uppercase">Registrar</button>
+									<video  id="video" width="180" height="134" autoplay="autoplay"></video>
 								</div>
 								
-								<video  id="video" width="180" height="134" autoplay="autoplay"></video>
+								
        						<div class="p-2 text-xs-center text-muted">
 								¿Administrador? <a class="text-black" href="<?base_url()?>index.php?acceso/iniciar_session"><span class="underline">Inicia Sesión</span></a>
 							</div>

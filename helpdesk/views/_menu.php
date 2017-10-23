@@ -37,7 +37,7 @@
 						<li class="compact-hide">
 							<a href="<?php echo base_url();?>index.php?/checador/lista_usuarios" class="waves-effect  waves-light">
 								<span class="s-icon"><i class="fa fa-plus"></i></span>
-								<span class="s-text">Reposte de Checador</span>
+								<span class="s-text">Reporte de Checador</span>
 							</a>
 						</li>
 						<?

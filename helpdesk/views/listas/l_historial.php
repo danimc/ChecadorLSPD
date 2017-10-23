@@ -93,12 +93,21 @@
 							<?
 						}
 							?>
+						<div class="box box-block bg-white <?=$col?>">
+							<div class="row">
+								<div class="col-md-12 mb-1 mb-md-0">
+									<h5 class="mb-1">Horarios</h5>
+									<canvas id="grafica" class="chart-container"></canvas>
+								</div>							
+							</div>
+						</div>
 							<div class=""></div>
 			<div class="box box-block bg-white <?=$col?>">
 				<!-- <h5 class="mb-1"><?=$titulo?>  </h5> -->
 			
 				<div class="table-responsive  " data-pattern="priority-columns">
 				<table class=" table table-striped table-bordered dataTable" id="table-2">
+		
 						<thead>
 							<tr>
 								<th>Fecha</th>
@@ -141,5 +150,69 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript" src="<?=base_url()?>src/js/Chart.js"></script>
+
+
+<script>
+var ctx = document.getElementById("grafica");
+
+var data = {
+	
+    labels: [<?
+	foreach ($datosGrafica as $grafica) 
+{
+	echo '"'.$grafica->fecha.'",';
+}?>],
+    datasets: [
+        {
+            label: "Hora de checado (24 Hrs.)",
+            fill: false,
+            lineTension: 0.0,
+            backgroundColor: "#f44236",
+            borderColor: "#f44236",
+            borderCapStyle: 'butt',
+            borderDash: [],
+            borderDashOffset: 0.0,
+            borderJoinStyle: 'miter',
+            pointBorderColor: "#f44236",
+            pointBackgroundColor: "#fff",
+            pointBorderWidth: 1,
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: "#f44236",
+            pointHoverBorderColor: "#fff",
+            pointHoverBorderWidth: 2,
+            pointRadius: 1,
+            pointHitRadius: 10,
+            data: [
+	<?
+			foreach ($datosGrafica as $grafica) 
+			{
+			$hora = $grafica->hora;
+			$asd = explode(':', $hora,6);
+			$hora = (int)$asd[0] . '.' .$asd[1];
+			echo $hora. ',';
+}
+?>],
+            spanGaps: false,
+        }
+    ]
+};
+
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: data,
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+});
+
+</script>
+
 
 

@@ -17,6 +17,8 @@
 
 		<script type="text/javascript" src="<?=base_url()?>src/vendor/tether/js/tether.min.js"></script>
 		<script type="text/javascript" src="<?=base_url()?>src/vendor/bootstrap4/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="<?=base_url()?>src/js/Chart.js"></script>
+
 		<script type="text/javascript" src="<?=base_url()?>src/vendor/detectmobilebrowser/detectmobilebrowser.js"></script>
 		<script type="text/javascript" src="<?=base_url()?>src/vendor/jscrollpane/jquery.mousewheel.js"></script>
 		<script type="text/javascript" src="<?=base_url()?>src/vendor/jscrollpane/mwheelIntent.js"></script>
@@ -55,5 +57,6 @@
 		<script type="text/javascript" src="<?=base_url()?>src/js/demo.js"></script>
 		<script type="text/javascript" src="<?=base_url()?>src/js/tables-datatable.js"></script>
 		<script type="text/javascript" src="<?=base_url()?>src/js/forms-pickers.js"></script>
+		
 	</body>
 </html>

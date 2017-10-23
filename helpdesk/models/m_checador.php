@@ -99,4 +99,17 @@ class m_checador extends CI_Model {
 
     }
 
+    function datos_grafica($usr)
+    {
+        $qry =""; 
+        $qry .= "SELECT
+        fecha,
+        hora_entrada as hora
+        FROM CH_checador
+        where usr = '$usr'
+        ORDER BY fecha asc";
+                            
+        return $this->db->query($qry)->result(); 
+    }
+
     }
