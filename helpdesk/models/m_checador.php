@@ -112,4 +112,24 @@ class m_checador extends CI_Model {
         return $this->db->query($qry)->result(); 
     }
 
+   function buscar_dias_vacios($id)
+    {
+        $qry = '';
+        $qry = "SELECT fecha FROM CH_checador
+                where usr = '$id'
+                order by fecha asc";
+
+        return $this->db->query($qry)->result();
+
+    }
+
+    function subir_faltas($fecha, $id)
+    {
+        $this->usr          = $id;   
+        $this->fecha        = $fecha;
+        $this->hora_entrada = '00:00:00';
+        $this->db->insert("CH_checador",$this); 
+
+    }
+
     }

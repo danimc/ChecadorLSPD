@@ -120,17 +120,20 @@
 							</thead>
 							<tbody>
 							<?
-
+								$entrada = '';
 								foreach($historico as $inventario){
-									$class= "";
-									$iconito="";
+									$entrada = $inventario->hora_entrada;
+									if($entrada =='00:00:00')
+										{
+											$entrada = "FALTA";
+										}
 									
 									$fecha = $this->m_armamento->hora_fecha_text($inventario->fecha);
 								
 							?>	
 							<tr class=" ">
 								<td><?=$fecha?></td>
-								<td><a href="<?=$inventario->foto_entrada?>" target="_blank" onclick="window.open(this.href, this.target, 'width=300,height=400'); return false;"><?=$inventario->hora_entrada?></a></td>
+								<td><a href="<?=$inventario->foto_entrada?>" target="_blank" onclick="window.open(this.href, this.target, 'width=300,height=400'); return false;"><?=$entrada?></a></td>
 							
 								
 								<td><a href="<?=$inventario->foto_salida?>"target="_blank" onclick="window.open(this.href, this.target, 'width=300,height=400'); return false;"><?=$inventario->hora_salida?></a></td>
@@ -147,6 +150,11 @@
 				</table>
 			</div>
 			</div>
+			<!-- <?
+			foreach ($probe as $dato) {
+				echo "hola ". $dato->fecha; 
+			}
+			?> -->
 		</div>
 	</div>
 </div>
@@ -187,11 +195,11 @@ var data = {
 	<?
 			foreach ($datosGrafica as $grafica) 
 			{
-			$hora = $grafica->hora;
-			$asd = explode(':', $hora,6);
-			$hora = (int)$asd[0] . '.' .$asd[1];
-			echo $hora. ',';
-}
+				$hora = $grafica->hora;
+				$asd = explode(':', $hora,6);
+				$hora = (int)$asd[0] . '.' .$asd[1];
+				echo $hora. ',';
+			}
 ?>],
             spanGaps: false,
         }

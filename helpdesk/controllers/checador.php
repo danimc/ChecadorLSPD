@@ -134,33 +134,56 @@ class Checador extends CI_Controller {
 	public function historial_checado()
 	{
 		$id = $this->uri->segment(3);
+
+		$dias = $this->m_checador->buscar_dias_vacios($id);
+		$this->llenar_dias_vacios($dias, $id);
+
 		$img = $this->m_usuarios->datos_usuario_validacion($id);
-		$datos['titulo'] = 'Reporte de checado por Empleado';	
+		$datos['titulo'] = 'Reporte de checado por Empleado';
 		$datos["historico"] = $this->m_checador->obt_checado($id);	
 		$datos["actual"] = $this->m_usuarios->obt_usuarios($id);
 		$datos["datosGrafica"] = $this->m_checador->datos_Grafica($id);	
 		$fotoPerfil = str_replace(" ", "%20", $img->nombreCompleto);
 		$ruta_foto = 'http://172.16.1.9/personal/src/img/fotografias/' .$fotoPerfil.'.JPG';
-		$ruta_foto2 = 'http://172.16.1.9/personal/src/img/fotografias/' .$fotoPerfil.'.jpg';
+			$ruta_foto2 = 'http://172.16.1.9/personal/src/img/fotografias/' .$fotoPerfil.'.jpg';
 			
 			$valida[0] = $ruta_foto2;
 			$valida[1] = $ruta_foto;
 			$datos["img"] = $valida;
-
+ 
 		$this->load->view('_head');
 		$this->load->view('_menu');
 		$this->load->view('listas/l_historial',$datos);
 		$this->load->view('_foot');
 	}
-	
-	public function resguardo()
-	{
 
-		$this->load->library('pdf');
-		$this->load->view('forms/f_resguardo');
-		$this->pdf->render();
-		$this->pdf->stream("welcome.pdf");
+	function llenar_dias_vacios($dias, $id)
+	{
+		$contador = '';
+		$dia = $dias;
+		$hoy = date('Y-m-d');
 		
+		foreach ($dia as $falta) 
+		{
+			if($falta->fecha <= $hoy)
+			{
+				if($contador == '')
+				{
+					$contador = $falta->fecha;
+
+				}
+				while ($contador < $falta->fecha) 
+				{
+					print("fecha" .$contador . "<br>");
+					$this->m_checador->subir_faltas($contador, $id);
+					$contador++;
+				}
+				$contador++;
+
+				//
+			}
+			
+		}
 	}
 	 
 	public function nuevo()
@@ -178,25 +201,9 @@ class Checador extends CI_Controller {
 		$this->load->view('forms/f_armamento',$datos);
 		$this->load->view('_foot');
 	}
-	
-	public function ver()
-	{
-		$id = $this->uri->segment(3);
 
-		$datos['id'] = $id;
-		$datos['titulo'] = 'Armamento';
-		$datos['accion'] = 'actualizar';
-		$datos['situacion'] = $this->m_armamento->obt_situacion();
-		$datos["actual"] = $this->m_armamento->obt_armamento($id);	
-		$datos["tipos"] = $this->m_armamento->obt_tipo();
-		$datos["estado"] = $this->m_armamento->obt_estado();
-		$datos["departamentos"] = $this->m_usuarios->obt_departamentos();
-		
-		$this->load->view('_head');
-		$this->load->view('_menu');
-		$this->load->view('forms/f_actualizarArmamento',$datos);
-		$this->load->view('_foot');
-	}
+
+
 	
 	public function movimiento()
 	{
