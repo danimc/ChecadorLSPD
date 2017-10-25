@@ -36,8 +36,21 @@
 						?>
 						<li class="compact-hide">
 							<a href="<?php echo base_url();?>index.php?/checador/lista_usuarios" class="waves-effect  waves-light">
-								<span class="s-icon"><i class="fa fa-plus"></i></span>
+								<span class="s-icon"><i class="fa fa-clock-o"></i></span>
 								<span class="s-text">Reporte de Checador</span>
+							</a>
+						</li>
+						<?
+							}
+						?>
+
+						<?
+							if($this->m_seguridad->acceso_modulo(5) != 0){
+						?>
+						<li class="compact-hide">
+							<a href="<?php echo base_url();?>index.php?/checador/lista_departamentos" class="waves-effect  waves-light">
+								<span class="s-icon"><i class="fa fa-building"></i></span>
+								<span class="s-text">Reporte por departamento</span>
 							</a>
 						</li>
 						<?
@@ -101,9 +114,6 @@
 								</div>
 							</li>
 						</ul>
-
-
-						
 					</div>
 				</nav>
 			</div>

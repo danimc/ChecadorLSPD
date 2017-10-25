@@ -48,7 +48,7 @@ class m_checador extends CI_Model {
     function obt_usuarios()
     {
         $qry =""; 
-        $qry .= "SELECT
+        $qry .= "SELECT distinct
         usuarios.user,
         usuarios.nombreCompleto,
         departamentos.nombre as dep

@@ -51,13 +51,13 @@
 								$temporal = '';
 								foreach($users as $usuario){
 
-								if ($usuario->user != $temporal)
+								if ($usuario->dep != $temporal)
 								{
 
 							?>	
 							<tr class="">
 								<td><?=$usuario->user?></td>
-								<td><?=$usuario->nombreCompleto?> </td>
+								<td>00 </td>
 								<!--<td></td>-->
 								<td><?=$usuario->dep?> </td>
 								
@@ -69,7 +69,7 @@
 									
 							</tr>
 							<?
-							$temporal = $usuario->user;
+							$temporal = $usuario->dep;
 						}
 						
 						}?>

@@ -93,7 +93,7 @@ class Checador extends CI_Controller {
 										<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 										<span aria-hidden="true">×</span>
 										</button>
-										<strong>Empleado no.: ' . $empleado .'</strong> Entrada Satisfactoria!
+										<strong></strong> Entrada Satisfactoria!
 									</div>';
 		 }
 		 elseif ($entrada->hora_salida == '')
@@ -104,7 +104,7 @@ class Checador extends CI_Controller {
 										<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 										<span aria-hidden="true">×</span>
 										</button>
-										<strong>Empleado no.: ' . $empleado .'</strong> Salida Satisfactoria!
+										<strong></strong> Salida Satisfactoria!
 									</div>';
 		 }
 		 else
@@ -113,7 +113,7 @@ class Checador extends CI_Controller {
 										<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 										<span aria-hidden="true">×</span>
 										</button>
-										<strong>Empleado no.: ' . $empleado .'</strong> Ya has checado entrada y salida el dia de hoy!
+										<strong></strong> Ya has checado entrada y salida el dia de hoy!
 									</div>';
 			unlink($dir);
 		 }
@@ -126,7 +126,7 @@ class Checador extends CI_Controller {
 		$datos["users"] = $this->m_checador->obt_usuarios();	
 		$this->load->view('_head');
 		$this->load->view('_menu');
-		$this->load->view('listas/l_armas',$datos);
+		$this->load->view('listas/l_usuarios',$datos);
 		$this->load->view('_foot');
     }
 	
@@ -186,19 +186,13 @@ class Checador extends CI_Controller {
 		}
 	}
 	 
-	public function nuevo()
+	public function lista_departamentos()
 	{
-		$datos['titulo'] = 'Armamento';
-		$datos['accion'] = 'guardar';
-		$datos['categoria'] = $this->m_armamento->obt_cat();
-		$datos["estado"] = $this->m_armamento->obt_estado();	
-		$datos["tipos"] = $this->m_armamento->obt_tipo();
-		$datos["subtipo"] = $this->m_armamento->obt_subtipo();
-		//$datos["estados"] = $this->m_armamento->obt_estados();	
-		$datos["departamentos"] = $this->m_usuarios->obt_departamentos();
+		$datos['titulo'] = 'Reporte por Departamento';	
+		$datos["users"] = $this->m_checador->obt_usuarios();			
 		$this->load->view('_head');
 		$this->load->view('_menu');
-		$this->load->view('forms/f_armamento',$datos);
+		$this->load->view('listas/l_depas',$datos);
 		$this->load->view('_foot');
 	}
 
