@@ -122,6 +122,15 @@ class Checador extends CI_Controller {
 
     public function lista_usuarios()
     {
+    	
+    	if (isset($_POST['mes'])) {
+    		$datos['mes'] = $_POST['mes'];
+    	}
+    	else
+    	{
+    		$datos['mes'] = date('m');
+    	}
+    	print $datos['mes'];
     	$datos['titulo'] = 'Reportes Checador';	
 		$datos["users"] = $this->m_checador->obt_usuarios();	
 		$this->load->view('_head');
@@ -134,15 +143,17 @@ class Checador extends CI_Controller {
 	public function historial_checado()
 	{
 		$id = $this->uri->segment(3);
+		$mes = $this->uri->segment(4);
+		print $mes;
 
-		$dias = $this->m_checador->buscar_dias_vacios($id);
-		$this->llenar_dias_vacios($dias, $id);
+		$dias = $this->m_checador->buscar_dias_vacios($id, $mes);
+		$this->llenar_dias_vacios($dias, $id, $mes);
 
 		$img = $this->m_usuarios->datos_usuario_validacion($id);
 		$datos['titulo'] = 'Reporte de checado por Empleado';
-		$datos["historico"] = $this->m_checador->obt_checado($id);	
+		$datos["historico"] = $this->m_checador->obt_checado($id, $mes);	
 		$datos["actual"] = $this->m_usuarios->obt_usuarios($id);
-		$datos["datosGrafica"] = $this->m_checador->datos_Grafica($id);	
+		$datos["datosGrafica"] = $this->m_checador->datos_Grafica($id, $mes);	
 		$fotoPerfil = str_replace(" ", "%20", $img->nombreCompleto);
 		$ruta_foto = 'http://172.16.1.9/personal/src/img/fotografias/' .$fotoPerfil.'.JPG';
 			$ruta_foto2 = 'http://172.16.1.9/personal/src/img/fotografias/' .$fotoPerfil.'.jpg';
@@ -157,58 +168,65 @@ class Checador extends CI_Controller {
 		$this->load->view('_foot');
 	}
 
-	function llenar_dias_vacios($dias, $id)
+	function llenar_dias_vacios($dias, $id, $mes)
 	{
 		$contador = '';
 		$dia = $dias;
 		$hoy = date('Y-m-d');
-		
-		foreach ($dia as $falta) 
-		{
-			if($falta->fecha <= $hoy)
-			{
-				if($contador == '')
-				{
-					$contador = $falta->fecha;
+		$mesHoy = date('m');
 
-				}
-				while ($contador < $falta->fecha) 
+		if($mesHoy == $mes)
+		{
+			foreach ($dia as $falta) 
+			{
+				if($falta->fecha <= $hoy)
+				{
+					if($contador == '')
+					{
+						$contador = $falta->fecha;
+					}
+					while ($contador < $falta->fecha) 
 				{
 					print("fecha" .$contador . "<br>");
 					$this->m_checador->subir_faltas($contador, $id);
 					$contador++;
 				}
 				$contador++;
-
 				//
 			}
 			
 		}
+
+		}
+		
+		
+	
 	}
 	 
 	public function lista_departamentos()
 	{
 		$datos['titulo'] = 'Reporte por Departamento';	
-		$datos["users"] = $this->m_checador->obt_usuarios();			
+		$datos["departamentos"] = $this->m_checador->obt_depas();			
 		$this->load->view('_head');
 		$this->load->view('_menu');
 		$this->load->view('listas/l_depas',$datos);
 		$this->load->view('_foot');
 	}
 
-
-
-	
-	public function movimiento()
+	public function historial_checado_depa()
 	{
-		$datos['titulo'] = 'masivo';
-		$datos['accion'] = 'actualizar_masivo';
-		$datos["departamentos"] = $this->m_usuarios->obt_departamentos();	
+		$id = $this->uri->segment(3);
+	
+		$datos['titulo'] = 'Reporte de checado por Departamento';
+		$datos["historico"] = $this->m_checador->reporte_por_depa($id);	
+		$datos["fecha"] = $this->m_checador->obt_fecha();
+				
 		$this->load->view('_head');
 		$this->load->view('_menu');
-		$this->load->view('forms/f_masivo',$datos);
+		$this->load->view('listas/l_historial_depa',$datos);
 		$this->load->view('_foot');
 	}
+	
 
 	public function guardar()
 	{

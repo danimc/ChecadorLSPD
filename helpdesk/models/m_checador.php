@@ -61,10 +61,10 @@ class m_checador extends CI_Model {
         return $this->db->query($qry)->result();   
     }
 
-    function obt_checado($id)
+    function obt_checado($id, $mes)
     {
 
-         $qry =""; 
+        $qry =""; 
         $qry .= "SELECT
         ch.fecha,
         usuarios.user,
@@ -78,7 +78,10 @@ class m_checador extends CI_Model {
         LEFT JOIN Tb_Empleados usuarios ON usuarios.user = usr
         LEFT JOIN Tb_DatosLaborales l ON l.rfc = usuarios.rfc
         LEFT JOIN departamentos ON departamentos.id = l.departamento
-        where usuarios.user = '$id'";
+        where usuarios.user = '$id'
+        and MONTH(ch.fecha) = '$mes'
+        ORDER BY fecha desc
+        LIMIT 15";
                             
         return $this->db->query($qry)->result();  
        
@@ -99,7 +102,7 @@ class m_checador extends CI_Model {
 
     }
 
-    function datos_grafica($usr)
+    function datos_grafica($usr, $mes)
     {
         $qry =""; 
         $qry .= "SELECT
@@ -107,16 +110,18 @@ class m_checador extends CI_Model {
         hora_entrada as hora
         FROM CH_checador
         where usr = '$usr'
+        and MONTH(fecha) = '$mes'
         ORDER BY fecha asc";
                             
         return $this->db->query($qry)->result(); 
     }
 
-   function buscar_dias_vacios($id)
+   function buscar_dias_vacios($id, $mes)
     {
         $qry = '';
         $qry = "SELECT fecha FROM CH_checador
                 where usr = '$id'
+                and MONTH(fecha) = '$mes'
                 order by fecha asc";
 
         return $this->db->query($qry)->result();
@@ -130,6 +135,52 @@ class m_checador extends CI_Model {
         $this->hora_entrada = '00:00:00';
         $this->db->insert("CH_checador",$this); 
 
+    }
+
+    function obt_depas()
+    {
+        $qry = '';
+        $qry = 'SELECT distinct
+        departamentos.id,
+        departamentos.nombre as dep
+        FROM CH_checador
+        LEFT JOIN Tb_Empleados usuarios ON usuarios.user = usr
+        LEFT JOIN Tb_DatosLaborales l ON l.rfc = usuarios.rfc
+        LEFT JOIN departamentos ON departamentos.id = l.departamento';
+
+        return $this->db->query($qry)->result();
+    }
+
+    function obt_fecha()
+    {
+        $qry = '';
+        $qry = 'SELECT distinct fecha 
+                FROM db_helpdesk.CH_checador
+                order by fecha asc
+                LIMIT 15';
+
+        return $this->db->query($qry)->result();
+    }
+
+    function reporte_por_depa($id)
+    {
+       $qry = '';
+        $qry = "SELECT 
+                usr,
+                usuarios.nombreCompleto,
+                departamentos.id as dep,
+                CH.fecha,
+                hora_entrada,
+                hora_salida
+                FROM db_helpdesk.CH_checador CH
+                LEFT JOIN Tb_Empleados usuarios ON usuarios.user = usr
+                LEFT JOIN Tb_DatosLaborales l ON l.rfc = usuarios.rfc
+                LEFT JOIN departamentos ON departamentos.id = l.departamento
+                WHERE departamentos.id = '$id'
+                AND CH.fecha BETWEEN '2017-10-16'  AND '2017-10-31'
+                order by fecha asc";
+
+                return $this->db->query($qry)->result();  
     }
 
     }

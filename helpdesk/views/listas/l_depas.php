@@ -39,46 +39,37 @@
 				<table class="table table-striped table-bordered dataTable" id="table-2">
 						<thead>
 							<tr>
-								<th>CODIGO EMPLEADO</th>
-								<th>NOMBRE</th>
-								<th>DEPARTAMENTO</th>
+								<th>CODIGO DEPARTAMENTO</th>
+								<th>NOMBRE DEPARTAMENTO</th>
 								<th>ACCIONES</th>
 								
 							</tr>
 							</thead>
 							<tbody>
-							<?
-								$temporal = '';
-								foreach($users as $usuario){
-
-								if ($usuario->dep != $temporal)
-								{
-
+							<?							
+								foreach($departamentos as $depas)
+									{
 							?>	
 							<tr class="">
-								<td><?=$usuario->user?></td>
-								<td>00 </td>
-								<!--<td></td>-->
-								<td><?=$usuario->dep?> </td>
-								
-								<td>
-									<a class="btn btn-info btn-sm" href="<?=base_url()?>index.php?/checador/historial_checado/<?=$usuario->user?>"><i class="fa  fa-arrows-h"></i> Reporte de Checado</a> 
+								<td><?=$depas->id?></td>
+								<td><?=$depas->dep?> </td>
+								<td align="center">
+									<a class="btn btn-danger btn-sm" href="<?=base_url()?>index.php?/checador/historial_checado_depa/<?=$depas->id?>"><i class="fa  fa-file-text"> </i> Reporte del Departamento</a> 
 									
 							</td>
 
 									
 							</tr>
 							<?
-							$temporal = $usuario->dep;
+							
 						}
-						
-						}?>
+						?>
 							</tbody>
 							<tfoot>
 							<tr>
 								<th></th>
 								<th></th>
-								<th></th>
+							
 								<th></th>
 											
 							</tr>

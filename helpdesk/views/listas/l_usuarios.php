@@ -21,9 +21,6 @@
 				$toltip = "";
 				$ref = '';
 				
-				
-					
-				
 				?>
 
 			
@@ -33,6 +30,18 @@
 			<span class="tag tag-warning"></span>
 			<span class="tag tag-danger"></span>
 			<br><br>
+			<div class="box box-block bg-white">
+				<div class="form form-group">
+					<form method="POST" action="<?=base_url()?>index.php?/checador/lista_usuarios">
+						<label>Mes:</label>
+						<select name="mes" id="mes" class="form-control" onchange="">
+							<option value="10">Octubre</option>
+							<option value="11">Noviembre</option>
+						</select>
+						<button type="submit" class="btn btn-mg btn-info">Generar</button>
+					</form>
+				</div>
+			</div>
 			<div class="box box-block bg-white">
 				<h5 class="mb-1"><?=$titulo?>  </h5>
 				<div class="table-responsive" data-pattern="priority-columns">
@@ -59,7 +68,7 @@
 								<td><?=$usuario->dep?> </td>
 								
 								<td>
-									<a class="btn btn-info btn-sm" href="<?=base_url()?>index.php?/checador/historial_checado/<?=$usuario->user?>"><i class="fa  fa-arrows-h"></i> Reporte de Checado</a> 
+									<a class="btn btn-info btn-sm" href="<?=base_url()?>index.php?/checador/historial_checado/<?=$usuario->user?>/<?=$mes?>"><i class="fa  fa-arrows-h"></i> Reporte de Checado</a> 
 									
 							</td>
 

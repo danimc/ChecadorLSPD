@@ -101,7 +101,7 @@
 								</div>							
 							</div>
 						</div>
-							<div class=""></div>
+						
 			<div class="box box-block bg-white <?=$col?>">
 				<!-- <h5 class="mb-1"><?=$titulo?>  </h5> -->
 			
@@ -149,12 +149,8 @@
 							</tfoot>
 				</table>
 			</div>
+			
 			</div>
-			<!-- <?
-			foreach ($probe as $dato) {
-				echo "hola ". $dato->fecha; 
-			}
-			?> -->
 		</div>
 	</div>
 </div>
