@@ -56,6 +56,7 @@ class m_checador extends CI_Model {
         LEFT JOIN Tb_Empleados usuarios ON usuarios.user = usr
         LEFT JOIN Tb_DatosLaborales l ON l.rfc = usuarios.rfc
         LEFT JOIN departamentos ON departamentos.id = l.departamento
+        where usuarios.user > 1 
         order by user asc";
                             
         return $this->db->query($qry)->result();   
@@ -146,20 +147,51 @@ class m_checador extends CI_Model {
         FROM CH_checador
         LEFT JOIN Tb_Empleados usuarios ON usuarios.user = usr
         LEFT JOIN Tb_DatosLaborales l ON l.rfc = usuarios.rfc
-        LEFT JOIN departamentos ON departamentos.id = l.departamento';
+        LEFT JOIN departamentos ON departamentos.id = l.departamento
+        where usuarios.user > 1';
 
         return $this->db->query($qry)->result();
     }
 
-    function obt_fecha()
+    function obt_nombres()
     {
         $qry = '';
-        $qry = 'SELECT distinct fecha 
-                FROM db_helpdesk.CH_checador
-                order by fecha asc
-                LIMIT 15';
+        $qry = 'SELECT 
+                usuarios.user, usuarios.nombreCompleto
+            FROM
+                Tb_Empleados usuarios
+                    LEFT JOIN
+                Tb_DatosLaborales l ON l.rfc = usuarios.rfc
+                    LEFT JOIN
+                departamentos ON departamentos.id = l.departamento
+            WHERE
+                departamentos.id = 1
+            ORDER BY user ASC';
 
         return $this->db->query($qry)->result();
+    }
+
+    function obt_asistencia($id, $fecha)
+    {
+        $qry = '';
+
+        $qry = "SELECT 
+                usr,
+                usuarios.nombreCompleto,
+                departamentos.id as dep,
+                departamentos.nombre as departamento,
+                CH.fecha,
+                hora_entrada,
+                hora_salida
+                FROM db_helpdesk.CH_checador CH
+                LEFT JOIN Tb_Empleados usuarios ON usuarios.user = usr
+                LEFT JOIN Tb_DatosLaborales l ON l.rfc = usuarios.rfc
+                LEFT JOIN departamentos ON departamentos.id = l.departamento
+                WHERE departamentos.id = '$id'
+                AND CH.fecha = '$fecha'
+                order by usr asc";
+
+                return $this->db->query($qry)->result();  
     }
 
     function reporte_por_depa($id)
@@ -178,7 +210,7 @@ class m_checador extends CI_Model {
                 LEFT JOIN departamentos ON departamentos.id = l.departamento
                 WHERE departamentos.id = '$id'
                 AND CH.fecha BETWEEN '2017-10-16'  AND '2017-10-31'
-                order by fecha asc";
+                order by usr asc";
 
                 return $this->db->query($qry)->result();  
     }

@@ -10,13 +10,11 @@
 					echo '<div class="alert alert-success alert-dismissable">
 					<button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>' . $this->session->userdata("guardado") . '</div>';
 					$this->session->unset_userdata("guardado");
-
 				}else if($this->session->userdata("actualizado"))
 				{        
 					echo '<div class="alert alert-info alert-dismissable">
 					<button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>' . $this->session->userdata("actualizado") . '</div>';
 					$this->session->unset_userdata("actualizado");
-
 				}
 				
 				$toltip = "";
@@ -46,58 +44,43 @@
 			<div class=""></div>
 			<div class="box box-block bg-white <?=$col?>">
 				<!-- <h5 class="mb-1"><?=$titulo?>  </h5> -->
-			
+<div class="col-md-2 box-block">
+<form method="POST" action="<?=base_url()?>index.php?/checador/historial_checado_depa/<?=$depa?>">
+  <h3>Checar Fecha:</h3>
+  <input class="form-control" type="date" min="2017-10-16" name="fecha">
+  <input class="btn btn-success" type="submit" value="Filtrar">
+</form>
+</div>
+<div class="col-md-10">
+	<h3 align="center">REPORTE DE CHECADO FECHA: <?=$dia?></h3>
+</div>
 				<div class="table-responsive  " data-pattern="priority-columns">
 				<table class=" table table-striped table-bordered dataTable" id="table-2">
 		
 						<thead>
 							<tr>
-								<th>Usuario</th>
-								<?
-								$tempFecha = '';
-								$i = 0;
-								foreach ($fecha as $data)
-								{
-									$tempFecha[$i] = $data->fecha;
-									?> <td><?=$data->fecha?><?
-									$i++;
-								} 
-								
-								?>								
+								<th>N° Empleado</th>
+								<th>Nombre </th>
+								<th>Ubicacion</th>
+								<th>Entrada</th>
+								<th>Salida</th>									
 							</tr>
 							</thead>
 							<tbody>
-							<?
-								$entrada = '';
-								$tempNombre = '';
-								$fecha = '';
-
-								foreach($historico as $data)
-								{/*$entrada = $data->hora_entrada;if($entrada=='00:00:00')
-										{
-											$entrada = "FALTA";
-										}			*/
-								?>	
-							<tr class=" ">
-								<?
-								if ($data->usr != $tempNombre)
-								{?>
-									<td><?=$data->nombreCompleto?></td>			
-									<?
-									$tempNombre = $data->usr;
-								}
-								if ($data->fecha == $tempFecha[0])
-								{
-									?><td><?=$data->hora_entrada?></td>
-									<?
-								}
-								?></tr>
-							<?}?>
+								<tr>
+								<?foreach ($asistencia as $data) {
+									?><td><?=$data->usr?></td>
+									  <td><?=$data->nombreCompleto?></td>
+									  <td><?=$data->departamento?></td>
+									  <td><?=$data->hora_entrada?></td>
+									  <td><?=$data->hora_salida?></td>
+									</tr>
+								<?}
+							
+								?>
 							</tbody>
 							<tfoot>
-							<tr>
-								
-							</tr>
+							
 							</tfoot>
 				</table>
 			</div>

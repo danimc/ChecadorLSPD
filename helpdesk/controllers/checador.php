@@ -130,7 +130,7 @@ class Checador extends CI_Controller {
     	{
     		$datos['mes'] = date('m');
     	}
-    	print $datos['mes'];
+    
     	$datos['titulo'] = 'Reportes Checador';	
 		$datos["users"] = $this->m_checador->obt_usuarios();	
 		$this->load->view('_head');
@@ -215,11 +215,22 @@ class Checador extends CI_Controller {
 
 	public function historial_checado_depa()
 	{
+
+		if (isset($_POST['fecha'])) {
+    		$fecha = $_POST['fecha'];
+    	}
+    	else
+    	{
+    		$fecha = date('Y-m-d');
+    	}
+
 		$id = $this->uri->segment(3);
-	
+		$datos['depa'] = $id;
+		$datos['dia'] = $fecha;
 		$datos['titulo'] = 'Reporte de checado por Departamento';
 		$datos["historico"] = $this->m_checador->reporte_por_depa($id);	
-		$datos["fecha"] = $this->m_checador->obt_fecha();
+		$datos["nombres"] = $this->m_checador->obt_nombres();
+		$datos['asistencia'] = $this->m_checador->obt_asistencia($id,$fecha);
 				
 		$this->load->view('_head');
 		$this->load->view('_menu');
